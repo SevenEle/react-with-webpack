@@ -41,13 +41,13 @@ module.exports = (app) => {
     }));
     app.get('*', (req, res, next) => {
         getTemplate()
-        .then((template) => { 
+        .then((template) => {
             if(!serverEntry) {
                 return res.status(500).send('bundle is compiling, refresh latter !');
             }
             const appString = ReactSSR.renderToString(serverEntry);
             res.send(template.replace('<!-- app -->', appString));
-                
+
             })
             .catch(next);
     });

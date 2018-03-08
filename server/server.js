@@ -2,16 +2,18 @@ const path = require('path');
 const ReactSSR = require('react-dom/server');
 const express = require('express');
 const fs = require('fs');
+const favicon = require('serve-favicon');
 const isDev = process.env.Node_env === 'development';
 
 
 const app = express();
+app.use(favicon(path.join(__dirname, '../favicon.ico')));
 
 if(!isDev) {
     app.use('/public', express.static(path.join(__dirname, '../dist/')));
     const serverEntry = require('../dist/server-entry.js').default;
     const template = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8');
-    
+
     app.get('*', (req, res) => {
         const appString = ReactSSR.renderToString(serverEntry);
         res.send(template.replace('<!-- app -->', appString));
