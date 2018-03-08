@@ -1,0 +1,16 @@
+module.exports = {
+    "extends": "airbnb",
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "rules": {
+        "react/jsx-filename-extension": [0]
+    }
+};

@@ -1,11 +1,5 @@
-import React from 'react'
-import { hot } from 'react-hot-loader'
+import React from 'react';
+import { hot } from 'react-hot-loader';//eslint-disable-line
 
-class App extends React.Component {
-    render() {
-        return (
-            <div>This is a webApp</div>
-        );
-    }
-}
-export default hot(module)(App)
+const App = () => <div>This is a webpack webapp !</div>;
+export default hot(module)(App);
